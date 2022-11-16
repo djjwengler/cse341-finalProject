@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongodb = require("./src/database/connect");
+//const mongodb = require("./src/database/connect");
 const port = process.env.PORT || 3000;
-const db = process.env.DB_NAME;
+const db = require("./src/models");
 const app = express();
 
 app.use(bodyParser.json()).use("/", require("./src/routes"));
@@ -14,11 +14,16 @@ process.on("uncaughtException", (err, origin) => {
   );
 });
 
-mongodb.initDatabase((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to database ${db} and listening on ${port}`);
-  }
-});
+db.mongoose
+  .connect(db.url, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => {
+    app.listen(port, () => {
+      console.log(`Connected to database ${db} and listening on ${port}`);
+    });
+  })
+  .catch((err) => {
+    console.log("Cannot connect to database", err);
+  });
