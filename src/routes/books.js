@@ -2,27 +2,27 @@ const routes = require("express").Router();
 const booksController = require("../controllers/books");
 
 //retrieves all books
-routes.get("/book");
+routes.get("/");
 
 //retrieves one book by ID
-routes.get("/book/:id");
+routes.get("/:id");
 
 //retrieves one book by name
-routes.get("/book/findByAuthor/:name");
+routes.get("/findByAuthor/:name");
 
 //retrieves one book by genre
-routes.get("/book/findByGenre/:genre");
+routes.get("/findByGenre/:genre");
 
 //updates one day by ID
-routes.put("/book/:id");
+routes.put("/:id");
 
 //updates one day by ID
-routes.put("/book/:id/location/:location");
+routes.put("/:id/location/:location");
 
 //deletes one day by ID
-routes.delete("/book/:id");
+routes.delete("/:id");
 
 //creates one day
-routes.post("/book");
+routes.post("/");
 
 module.exports = routes;

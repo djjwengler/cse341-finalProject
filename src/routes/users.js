@@ -16,15 +16,15 @@ const config = {
 };
 
 // auth router attaches /login, /logout, and /callback routes to the baseURL
-routes.use(auth(config));
+// routes.use(auth(config));
 
 // req.isAuthenticated is provided from the auth router
-routes.get("/", (req, res) => {
-  res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
-});
+// routes.get("/", (req, res) => {
+//   res.send(req.oidc.isAuthenticated() ? "Logged in" : "Logged out");
+// });
 
 //retrieves all users
-routes.get("/user");
+routes.get("/user", usersController.getAll);
 //retrieves one user by ID
 routes.get("/user/:id");
 
@@ -35,6 +35,6 @@ routes.put("/user/:id");
 routes.delete("/user/:id");
 
 //creates one user
-routes.post("/user");
+routes.post("/user", usersController.create);
 
 module.exports = routes;

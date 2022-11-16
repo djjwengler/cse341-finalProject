@@ -1,28 +1,38 @@
-// const mongodb = require("../database/connect");
-// const ObjectId = require("mongodb").ObjectId;
-// const dotenv = require("dotenv");
-// dotenv.config();
+const db = require("../models");
+const UserModel = db.user;
 
-// const getAllUsers = async (req, res) => {
-//   // #swagger.description = 'See all books'
-//   try {
-//     const recipes = await mongodb
-//       .getDatabase()
-//       .db(process.env.DB_NAME)
-//       .collection("Recipes")
-//       .find();
-//     recipes.toArray((err, lists) => {
-//       if (err) {
-//         res.status(400).json({ message: err });
-//       }
-//       res.setHeader("Content-Type", "application/json");
-//       res.status(200).json(lists);
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// };
+module.exports.create = (req, res) => {
+  try {
+    const user = new UserModel(req.body);
+    user
+      .save()
+      .then((data) => {
+        console.log(data);
+        res.status(201).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while creating the user.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
 
-// module.exports = {
-//   getAllUsers,
-// };
+module.exports.getAll = (req, res) => {
+  try {
+    UserModel.find({})
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message: err.message || "Some error occurred while retrieving users.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};

@@ -2,30 +2,30 @@ const routes = require("express").Router();
 const mediaController = require("../controllers/movies");
 
 //gets all media
-routes.get("/movie");
+routes.get("/");
 
 //gets one media
-routes.get("/movie/:id");
+routes.get("/:id");
 
 //gets one media by title
-routes.get("/movie/:name");
+routes.get("/:name");
 
 //gets one media by genre
-routes.get("/movie/:genre");
+routes.get("/:genre");
 
 //gets one media by author
-routes.get("/movie/:rating");
+routes.get("/:rating");
 
 //creates one media
-routes.post("/movie");
+routes.post("/");
 
 //updates one media identified by id
-routes.put("/movie/:id");
+routes.put("/:id");
 
 //updates one media location
-routes.put("/movie/:id/:location");
+routes.put("/:id/:location");
 
 //deletes one media
-routes.delete("/movie/:id");
+routes.delete("/:id");
 
 module.exports = routes;

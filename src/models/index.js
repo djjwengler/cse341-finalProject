@@ -7,9 +7,10 @@ mongoose.Promise = global.Promise;
 const db = {};
 db.mongoose = mongoose;
 db.url = process.env.MONGODB_URI;
-db.user = require("./user")(mongoose);
-db.movie = require("./movie")(mongoose);
-db.review = require("./review")(mongoose);
-db.book = require("./book")(mongoose);
+db.user = require("./user.js")(mongoose);
+db.movie = require("./movie.js")(mongoose);
+db.review = require("./review.js")(mongoose);
+db.book = require("./book.js")(mongoose);
+db.database = process.env.DB_NAME;
 
 module.exports = db;

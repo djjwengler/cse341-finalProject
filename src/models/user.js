@@ -26,13 +26,7 @@ module.exports = (mongoose) => {
         unique: true,
       },
       phoneNum: {
-        type: Number,
-        validate: {
-          validator: function (v) {
-            return /\d{3}-\d{3}-\d{4}/.text(v);
-          },
-          message: (props) => `${props.value} is not a valid phone number!`,
-        },
+        type: String,
         required: "User phone number is required",
       },
     })

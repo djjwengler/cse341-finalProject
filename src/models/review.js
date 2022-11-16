@@ -1,6 +1,6 @@
 module.exports = (mongoose) => {
   const Review = mongoose.model(
-    "review",
+    "reviews",
     mongoose.Schema({
       username: {
         type: String,

@@ -21,7 +21,9 @@ db.mongoose
   })
   .then(() => {
     app.listen(port, () => {
-      console.log(`Connected to database ${db} and listening on ${port}`);
+      console.log(
+        `Connected to database ${db.database} and listening on ${port}`
+      );
     });
   })
   .catch((err) => {
