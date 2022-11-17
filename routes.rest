@@ -1,0 +1,55 @@
+// LOCALHOST USERS COLLECTION
+
+### Get all users
+GET http://localhost:3000/users 
+
+### Create user
+POST http://localhost:3000/users HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "BobbySue",
+    "firstName": "Bobby",
+    "lastName": "Susan",
+    "streetAddress": "230 Bruce Hill Rd",
+    "email": "BobSue@example.com",
+    "phoneNum": "207-555-5555"
+  }
+
+
+// LOCALHOST MOVIES COLLECTION
+
+### Get all movies
+GET http://localhost:3000/movies 
+
+### Get one movie
+GET http://localhost:3000/movies/6374fedf191e03ef27dec2f6 
+
+### Create movie
+POST http://localhost:3000/movies HTTP/1.1
+content-type: application/json
+
+  {
+    "title": "Pride and Prejudice",
+    "rating": "PG",
+    "description": "There is pride and there is prejudice and also Darcy is in it.",
+    "genre": "romance",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "true",
+    "location": "226 Bruce Hill Rd"
+  }
+
+# ### Update movie
+# PUT http://localhost:3000/movies/6359a5f35d6e75e725998db6 HTTP/1.1
+# content-type: application/json
+
+# {
+#     "name": "NewestRecipe",
+#     "ingredients": ["7 amazing ingredients", "2 amazing ingredients"],
+#     "directions": ["put them all together", "cook them"],
+#     "groceryList": ["first", "second"],
+#     "mealType": "entree"
+# }
+
+# ### Delete movie
+# DELETE http://localhost:3000/movies/6359a5f35d6e75e725998db6 HTTP/1.1
