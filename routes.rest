@@ -23,10 +23,16 @@ content-type: application/json
 GET http://localhost:3000/movies 
 
 ### Get one movie by Id
-GET http://localhost:3000/movies/6374fedf191e03ef27dec2f6
+GET http://localhost:3000/movies/6374ff5e191e03ef27dec2f7
 
 ### Get one movie by title
 GET http://localhost:3000/movies/title/Hocus%20Pocus
+
+### Get movies by rating
+GET http://localhost:3000/movies/rating/PG-13
+
+### Get movies by genre
+GET http://localhost:3000/movies/genre/comedy
 
 ### Create movie
 POST http://localhost:3000/movies HTTP/1.1
@@ -42,17 +48,19 @@ content-type: application/json
     "location": "226 Bruce Hill Rd"
   }
 
-# ### Update movie
-# PUT http://localhost:3000/movies/6359a5f35d6e75e725998db6 HTTP/1.1
-# content-type: application/json
+### Update movie
+PUT http://localhost:3000/movies/6374fedf191e03ef27dec2f6 HTTP/1.1
+content-type: application/json
 
-# {
-#     "name": "NewestRecipe",
-#     "ingredients": ["7 amazing ingredients", "2 amazing ingredients"],
-#     "directions": ["put them all together", "cook them"],
-#     "groceryList": ["first", "second"],
-#     "mealType": "entree"
-# }
+{
+    "title": "Hocus Pocus",
+    "rating": "PG",
+    "description": "Three witches try to cast a spell to reclaim their youth.",
+    "genre": "comedy",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+}
 
-# ### Delete movie
-# DELETE http://localhost:3000/movies/6359a5f35d6e75e725998db6 HTTP/1.1
+### Delete movie
+DELETE http://localhost:3000/movies/6376b165b284a23c53300ac5 HTTP/1.1
