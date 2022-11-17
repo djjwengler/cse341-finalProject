@@ -2,10 +2,10 @@ const routes = require("express").Router();
 const mediaController = require("../controllers/movies");
 
 //gets all media
-routes.get("/");
+routes.get("/", mediaController.getAll);
 
 //gets one media
-routes.get("/:id");
+routes.get("/:id", mediaController.getOneById);
 
 //gets one media by title
 routes.get("/:name");
@@ -17,7 +17,7 @@ routes.get("/:genre");
 routes.get("/:rating");
 
 //creates one media
-routes.post("/");
+routes.post("/", mediaController.create);
 
 //updates one media identified by id
 routes.put("/:id");
