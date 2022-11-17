@@ -8,7 +8,7 @@ routes.get("/", mediaController.getAll);
 routes.get("/:id", mediaController.getOneById);
 
 //gets one media by title
-routes.get("/:name");
+routes.get("/title/:title", mediaController.getOneByTitle);
 
 //gets one media by genre
 routes.get("/:genre");

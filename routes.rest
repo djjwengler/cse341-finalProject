@@ -22,18 +22,21 @@ content-type: application/json
 ### Get all movies
 GET http://localhost:3000/movies 
 
-### Get one movie
-GET http://localhost:3000/movies/6374fedf191e03ef27dec2f6 
+### Get one movie by Id
+GET http://localhost:3000/movies/6374fedf191e03ef27dec2f6
+
+### Get one movie by title
+GET http://localhost:3000/movies/title/Hocus%20Pocus
 
 ### Create movie
 POST http://localhost:3000/movies HTTP/1.1
 content-type: application/json
 
   {
-    "title": "Pride and Prejudice",
+    "title": "Hook",
     "rating": "PG",
-    "description": "There is pride and there is prejudice and also Darcy is in it.",
-    "genre": "romance",
+    "description": "Peter Pan grows up",
+    "genre": "comedy",
     "ownerId": "6374fe62191e03ef27dec2f5",
     "availability": "true",
     "location": "226 Bruce Hill Rd"
