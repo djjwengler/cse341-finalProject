@@ -24,17 +24,17 @@ const config = {
 // });
 
 //retrieves all users
-routes.get("/user", usersController.getAll);
+routes.get("/", usersController.getAll);
 //retrieves one user by ID
-routes.get("/user/:id");
+routes.get("/:id");
 
 //updates one user by ID
-routes.put("/user/:id");
+routes.put("/:id");
 
 //deletes one user by ID
-routes.delete("/user/:id");
+routes.delete("/:id");
 
 //creates one user
-routes.post("/user", usersController.create);
+routes.post("/", usersController.create);
 
 module.exports = routes;
