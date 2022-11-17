@@ -44,8 +44,8 @@ content-type: application/json
     "description": "Peter Pan grows up",
     "genre": "comedy",
     "ownerId": "6374fe62191e03ef27dec2f5",
-    "availability": "true",
-    "location": "226 Bruce Hill Rd"
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
   }
 
 ### Update movie
@@ -63,4 +63,53 @@ content-type: application/json
 }
 
 ### Delete movie
-DELETE http://localhost:3000/movies/6376b165b284a23c53300ac5 HTTP/1.1
+DELETE http://localhost:3000/movies/6376b306dc535f7efffbd6fd HTTP/1.1
+
+
+// LOCALHOST BOOKS COLLECTION
+
+### Get all books
+GET http://localhost:3000/books 
+
+### Get one book by Id
+GET http://localhost:3000/books/6376b660b06610cce064cc31
+
+### Get one book by title
+GET http://localhost:3000/books/title/Persuasion
+
+### Get books by author
+GET http://localhost:3000/books/author/Jane%20Austen
+
+### Get books by genre
+GET http://localhost:3000/books/genre/romance
+
+### Create book
+POST http://localhost:3000/books HTTP/1.1
+content-type: application/json
+
+  {
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "description": "Sadness and then happiness",
+    "genre": "romance",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+  }
+
+### Update book
+PUT http://localhost:3000/books/6376b734b06610cce064cc3c HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "description": "Sadness and then happiness",
+    "genre": "romance",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+}
+
+### Delete book
+DELETE http://localhost:3000/books/6376b8313dc2c3df9667833c HTTP/1.1

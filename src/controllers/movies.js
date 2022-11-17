@@ -5,8 +5,8 @@ const ObjectId = require("mongodb").ObjectId;
 module.exports.create = (req, res) => {
   // #swagger.description = 'Add movie'
   try {
-    const user = new MovieModel(req.body);
-    user
+    const movie = new MovieModel(req.body);
+    movie
       .save()
       .then((data) => {
         console.log(data);
@@ -44,7 +44,7 @@ module.exports.getOneById = (req, res) => {
   // #swagger.description = 'See one movie by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid contact id to find a day.");
+      res.status(400).json("Must use a valid contact id to find a movie.");
     }
     const movieId = req.params.id;
     MovieModel.findById(movieId, (err, movie) => {
@@ -76,7 +76,7 @@ module.exports.getOneByTitle = (req, res) => {
       })
       .catch((err) => {
         res.status(500).send({
-          message: err.message || "Some error occurred while retrieving users.",
+          message: err.message || "Some error occurred while retrieving movie.",
         });
       });
   } catch (err) {
@@ -133,7 +133,7 @@ module.exports.deleteOne = async (req, res) => {
   // #swagger.description = 'Delete movie by ID'
   try {
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid contact id to delete a contact.");
+      res.status(400).json("Must use a valid id to delete a movie.");
     }
     const movieId = new ObjectId(req.params.id);
     MovieModel.deleteOne({ _id: movieId })
@@ -152,7 +152,7 @@ module.exports.update = async (req, res) => {
   try {
     const movieId = new ObjectId(req.params.id);
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid contact id to update a contact.");
+      res.status(400).json("Must use a valid id to update a book.");
     }
     const updateMovie = {
       title: req.body.title,
