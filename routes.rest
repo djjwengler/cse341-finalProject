@@ -113,3 +113,42 @@ content-type: application/json
 
 ### Delete book
 DELETE http://localhost:3000/books/6376b8313dc2c3df9667833c HTTP/1.1
+
+// LOCALHOST REVIEWS COLLECTION
+
+### Get all reviews
+GET http://localhost:3000/reviews 
+
+### Get one review by Id
+GET http://localhost:3000/reviews/6376cc411740f4925526da8f
+
+### Get one review by username
+GET http://localhost:3000/reviews/username/JWengler
+
+### Get reviews by movie/book id
+GET http://localhost:3000/reviews/media/6376b734b06610cce064cc3c
+
+### Create review
+POST http://localhost:3000/reviews HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Bob",
+    "mediaId": "6376b734b06610cce064cc3c",
+    "reviewTitle": "Um ...",
+    "reviewBody": "I don't understand. Too many people."
+  }
+
+### Update review
+PUT http://localhost:3000/reviews/6376cd121740f4925526da9c HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Bob",
+    "mediaId": "6376b734b06610cce064cc3c",
+    "reviewTitle": "Um ...",
+    "reviewBody": "I don't understand. Too many people. Umm.."
+  }
+
+### Delete review
+DELETE http://localhost:3000/reviews/6376cd121740f4925526da9c HTTP/1.1

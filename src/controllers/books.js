@@ -4,6 +4,7 @@ const ObjectId = require("mongodb").ObjectId;
 
 module.exports.create = (req, res) => {
   // #swagger.description = 'Add book'
+
   try {
     const book = new BookModel(req.body);
     book
@@ -131,7 +132,7 @@ module.exports.deleteOne = async (req, res) => {
   // #swagger.description = 'Delete book by ID'
   try {
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid contact id to delete a book.");
+      res.status(400).json("Must use a valid id to delete a book.");
     }
     const bookId = new ObjectId(req.params.id);
     BookModel.deleteOne({ _id: bookId })

@@ -1,28 +1,165 @@
-// const mongodb = require("../database/connect");
-// const ObjectId = require("mongodb").ObjectId;
-// const dotenv = require("dotenv");
-// dotenv.config();
+const db = require("../models");
+const ReviewModel = db.review;
+const ObjectId = require("mongodb").ObjectId;
 
-// const getAllReviews = async (req, res) => {
-//   // #swagger.description = 'See all books'
-//   try {
-//     const recipes = await mongodb
-//       .getDatabase()
-//       .db(process.env.DB_NAME)
-//       .collection("Recipes")
-//       .find();
-//     recipes.toArray((err, lists) => {
-//       if (err) {
-//         res.status(400).json({ message: err });
-//       }
-//       res.setHeader("Content-Type", "application/json");
-//       res.status(200).json(lists);
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// };
+module.exports.create = (req, res) => {
+  // #swagger.description = 'Add review'
 
-// module.exports = {
-//   getAllReviews,
-// };
+  try {
+    const review = new ReviewModel(req.body);
+    review
+      .save()
+      .then((data) => {
+        console.log(data);
+        res.status(201).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while adding the review.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.getAll = (req, res) => {
+  // #swagger.description = 'See all reviews'
+  try {
+    ReviewModel.find({})
+      .then((data) => {
+        res.status(200).send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving reviews.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.getOneById = (req, res) => {
+  // #swagger.description = 'See one review by id'
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json("Must use a valid id to find a review.");
+    }
+    const reviewId = req.params.id;
+    ReviewModel.findById(reviewId, (err, review) => {
+      if (err) {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving the review.",
+        });
+      }
+      if (review) {
+        res.status(200).send(review);
+      } else {
+        res.status(500).send({
+          message: err.message || "There is no review by this title.",
+        });
+      }
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.getByUsername = (req, res) => {
+  try {
+    const username = req.params.username;
+    ReviewModel.find({ username: username })
+      .then((data) => {
+        if (data.length == 0) {
+          res.status(500).send("No reviews could be found by that username.");
+        } else {
+          res.status(200).send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving reviews.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.getByMedia = (req, res) => {
+  try {
+    const mediaId = req.params.id;
+    ReviewModel.find({ mediaId: mediaId })
+      .then((data) => {
+        if (data.length == 0) {
+          res.status(500).send("No reviews could be found by that media Id.");
+        } else {
+          res.status(200).send(data);
+        }
+      })
+      .catch((err) => {
+        res.status(500).send({
+          message:
+            err.message || "Some error occurred while retrieving reviews.",
+        });
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.deleteOne = async (req, res) => {
+  // #swagger.description = 'Delete review by ID'
+  try {
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json("Must use a valid id to delete a review.");
+    }
+    const reviewId = new ObjectId(req.params.id);
+    ReviewModel.deleteOne({ _id: reviewId })
+      .then(() => {
+        res.status(200).json("Review successfully deleted");
+      })
+      .catch((err) => {
+        console.log(error);
+      });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
+
+module.exports.update = async (req, res) => {
+  try {
+    const reviewId = new ObjectId(req.params.id);
+    if (!ObjectId.isValid(req.params.id)) {
+      res.status(400).json("Must use a valid id to update a review.");
+    }
+    const updateReview = {
+      username: req.body.username,
+      mediaId: req.body.mediaId,
+      reviewTitle: req.body.reviewTitle,
+      reviewBody: req.body.reviewBody,
+    };
+    ReviewModel.findOneAndUpdate(
+      { _id: reviewId },
+      updateReview,
+      null,
+      (err, data) => {
+        if (err) {
+          res
+            .status(500)
+            .json(err || "Some error occurred while updating the review.");
+        } else {
+          res.status(204).send(data);
+          console.log("New data : ", updateReview);
+        }
+      }
+    );
+  } catch (err) {
+    res.status(500).json(err);
+  }
+};
