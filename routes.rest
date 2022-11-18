@@ -1,13 +1,13 @@
 // LOCALHOST USERS COLLECTION
 
 ### Get all users
-GET http://localhost:3000/users 
+GET http://localhost:8080/users 
 
 ### Get one user by Id
-GET http://localhost:3000/users/6374fe62191e03ef27dec2f5
+GET http://localhost:8080/users/6374fe62191e03ef27dec2f5
 
 ### Create user
-POST http://localhost:3000/users HTTP/1.1
+POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
   {
@@ -20,7 +20,7 @@ content-type: application/json
   }
 
 ### Update user
-PUT http://localhost:3000/users/6374fe62191e03ef27dec2f5 HTTP/1.1
+PUT http://localhost:8080/users/6374fe62191e03ef27dec2f5 HTTP/1.1
 content-type: application/json
 
   {
@@ -34,27 +34,27 @@ content-type: application/json
 
 
 ### Delete user
-DELETE http://localhost:3000/users/6375951bd861f472c2103262 HTTP/1.1
+DELETE http://localhost:8080/users/6375951bd861f472c2103262 HTTP/1.1
 
 // LOCALHOST MOVIES COLLECTION
 
 ### Get all movies
-GET http://localhost:3000/movies 
+GET http://localhost:8080/movies 
 
 ### Get one movie by Id
-GET http://localhost:3000/movies/6374ff5e191e03ef27dec2f7
+GET http://localhost:8080/movies/6374ff5e191e03ef27dec2f7
 
 ### Get one movie by title
-GET http://localhost:3000/movies/title/Hocus%20Pocus
+GET http://localhost:8080/movies/title/Hocus%20Pocus
 
 ### Get movies by rating
-GET http://localhost:3000/movies/rating/PG-13
+GET http://localhost:8080/movies/rating/PG-13
 
 ### Get movies by genre
-GET http://localhost:3000/movies/genre/comedy
+GET http://localhost:8080/movies/genre/comedy
 
 ### Create movie
-POST http://localhost:3000/movies HTTP/1.1
+POST http://localhost:8080/movies HTTP/1.1
 content-type: application/json
 
   {
@@ -68,7 +68,7 @@ content-type: application/json
   }
 
 ### Update movie
-PUT http://localhost:3000/movies/6374fedf191e03ef27dec2f6 HTTP/1.1
+PUT http://localhost:8080/movies/6374fedf191e03ef27dec2f6 HTTP/1.1
 content-type: application/json
 
 {
@@ -82,28 +82,28 @@ content-type: application/json
 }
 
 ### Delete movie
-DELETE http://localhost:3000/movies/6376b306dc535f7efffbd6fd HTTP/1.1
+DELETE http://localhost:8080/movies/6376b306dc535f7efffbd6fd HTTP/1.1
 
 
 // LOCALHOST BOOKS COLLECTION
 
 ### Get all books
-GET http://localhost:3000/books 
+GET http://localhost:8080/books 
 
 ### Get one book by Id
-GET http://localhost:3000/books/6376b660b06610cce064cc31
+GET http://localhost:8080/books/6376b660b06610cce064cc31
 
 ### Get one book by title
-GET http://localhost:3000/books/title/Persuasion
+GET http://localhost:8080/books/title/Persuasion
 
 ### Get books by author
-GET http://localhost:3000/books/author/Jane%20Austen
+GET http://localhost:8080/books/author/Jane%20Austen
 
 ### Get books by genre
-GET http://localhost:3000/books/genre/romance
+GET http://localhost:8080/books/genre/romance
 
 ### Create book
-POST http://localhost:3000/books HTTP/1.1
+POST http://localhost:8080/books HTTP/1.1
 content-type: application/json
 
   {
@@ -117,7 +117,7 @@ content-type: application/json
   }
 
 ### Update book
-PUT http://localhost:3000/books/6376b734b06610cce064cc3c HTTP/1.1
+PUT http://localhost:8080/books/6376b734b06610cce064cc3c HTTP/1.1
 content-type: application/json
 
 {
@@ -131,24 +131,24 @@ content-type: application/json
 }
 
 ### Delete book
-DELETE http://localhost:3000/books/6376b8313dc2c3df9667833c HTTP/1.1
+DELETE http://localhost:8080/books/6376b8313dc2c3df9667833c HTTP/1.1
 
 // LOCALHOST REVIEWS COLLECTION
 
 ### Get all reviews
-GET http://localhost:3000/reviews 
+GET http://localhost:8080/reviews 
 
 ### Get one review by Id
-GET http://localhost:3000/reviews/6376cc411740f4925526da8f
+GET http://localhost:8080/reviews/6376cc411740f4925526da8f
 
 ### Get one review by username
-GET http://localhost:3000/reviews/username/JWengler
+GET http://localhost:8080/reviews/username/JWengler
 
 ### Get reviews by movie/book id
-GET http://localhost:3000/reviews/media/6376b734b06610cce064cc3c
+GET http://localhost:8080/reviews/media/6376b734b06610cce064cc3c
 
 ### Create review
-POST http://localhost:3000/reviews HTTP/1.1
+POST http://localhost:8080/reviews HTTP/1.1
 content-type: application/json
 
   {
@@ -159,7 +159,7 @@ content-type: application/json
   }
 
 ### Update review
-PUT http://localhost:3000/reviews/6376cd121740f4925526da9c HTTP/1.1
+PUT http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
 content-type: application/json
 
   {
@@ -170,4 +170,4 @@ content-type: application/json
   }
 
 ### Delete review
-DELETE http://localhost:3000/reviews/6376cd121740f4925526da9c HTTP/1.1
+DELETE http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
