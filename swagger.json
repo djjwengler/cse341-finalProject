@@ -9,6 +9,17 @@
   "basePath": "/",
   "schemes": ["https", "http"],
   "paths": {
+    "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api-docs": {
       "get": {
         "description": "",
@@ -19,6 +30,18 @@
     "/books/": {
       "get": {
         "description": "See all books",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Add book",
         "parameters": [
           {
             "name": "body",
@@ -51,18 +74,6 @@
             }
           }
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "500": {
-            "description": "Internal Server Error"
-          }
-        }
-      },
-      "post": {
-        "description": "Add book",
-        "parameters": [],
         "responses": {
           "201": {
             "description": "Created"
