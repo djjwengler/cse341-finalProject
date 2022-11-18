@@ -70,6 +70,8 @@ module.exports.getOneById = (req, res) => {
 };
 
 module.exports.getByUsername = (req, res) => {
+  // #swagger.description = 'See all reviews by username'
+
   try {
     const username = req.params.username;
     ReviewModel.find({ username: username })
@@ -92,6 +94,8 @@ module.exports.getByUsername = (req, res) => {
 };
 
 module.exports.getByMedia = (req, res) => {
+  // #swagger.description = 'See all reviews by media id'
+
   try {
     const mediaId = req.params.id;
     ReviewModel.find({ mediaId: mediaId })
@@ -133,6 +137,8 @@ module.exports.deleteOne = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
+  // #swagger.description = 'Update one review by id'
+
   try {
     const reviewId = new ObjectId(req.params.id);
     if (!ObjectId.isValid(req.params.id)) {

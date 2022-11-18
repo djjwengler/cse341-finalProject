@@ -3,19 +3,38 @@
 ### Get all users
 GET http://localhost:3000/users 
 
+### Get one user by Id
+GET http://localhost:3000/users/6374fe62191e03ef27dec2f5
+
 ### Create user
 POST http://localhost:3000/users HTTP/1.1
 content-type: application/json
 
   {
-    "username": "BobbySue",
-    "firstName": "Bobby",
-    "lastName": "Susan",
-    "streetAddress": "230 Bruce Hill Rd",
-    "email": "BobSue@example.com",
-    "phoneNum": "207-555-5555"
+    "username": "Timmy",
+    "firstName": "Tim",
+    "lastName": "Smith",
+    "streetAddress": "218 Bruce Hill Rd",
+    "email": "timsmith@example.com",
+    "phoneNum": "207-555-8888"
   }
 
+### Update user
+PUT http://localhost:3000/users/6374fe62191e03ef27dec2f5 HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Timmy",
+    "firstName": "Tim",
+    "lastName": "Smith",
+    "streetAddress": "218 Bruce Hill Rd",
+    "email": "timsmith@example.com",
+    "phoneNum": "207-555-1111"
+  }
+
+
+### Delete user
+DELETE http://localhost:3000/users/6375951bd861f472c2103262 HTTP/1.1
 
 // LOCALHOST MOVIES COLLECTION
 

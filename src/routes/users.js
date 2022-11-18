@@ -26,13 +26,13 @@ const config = {
 //retrieves all users
 routes.get("/", usersController.getAll);
 //retrieves one user by ID
-routes.get("/:id");
+routes.get("/:id", usersController.getOneById);
 
 //updates one user by ID
-routes.put("/:id");
+routes.put("/:id", usersController.update);
 
 //deletes one user by ID
-routes.delete("/:id");
+routes.delete("/:id", usersController.deleteOne);
 
 //creates one user
 routes.post("/", usersController.create);

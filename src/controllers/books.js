@@ -47,15 +47,15 @@ module.exports.getOneById = (req, res) => {
       res.status(400).json("Must use a valid id to find a book.");
     }
     const bookId = req.params.id;
-    BookModel.findById(bookId, (err, movie) => {
+    BookModel.findById(bookId, (err, book) => {
       if (err) {
         res.status(500).send({
           message:
             err.message || "Some error occurred while retrieving the book.",
         });
       }
-      if (movie) {
-        res.status(200).send(movie);
+      if (book) {
+        res.status(200).send(book);
       } else {
         res.status(500).send({
           message: err.message || "There is no book by this title.",
@@ -68,6 +68,8 @@ module.exports.getOneById = (req, res) => {
 };
 
 module.exports.getOneByTitle = (req, res) => {
+  // #swagger.description = 'See one book by title'
+
   try {
     const title = req.params.title;
     BookModel.find({ title: title })
@@ -85,6 +87,8 @@ module.exports.getOneByTitle = (req, res) => {
 };
 
 module.exports.getByAuthor = (req, res) => {
+  // #swagger.description = 'See all books by author'
+
   try {
     const author = req.params.author;
     BookModel.find({ author: author })
@@ -107,6 +111,8 @@ module.exports.getByAuthor = (req, res) => {
 };
 
 module.exports.getByGenre = (req, res) => {
+  // #swagger.description = 'See all books by genre'
+
   try {
     const genre = req.params.genre;
     BookModel.find({ genre: genre })
@@ -148,6 +154,8 @@ module.exports.deleteOne = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
+  // #swagger.description = 'Update book by ID'
+
   try {
     const bookId = new ObjectId(req.params.id);
     if (!ObjectId.isValid(req.params.id)) {

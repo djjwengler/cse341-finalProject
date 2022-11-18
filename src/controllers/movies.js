@@ -44,7 +44,7 @@ module.exports.getOneById = (req, res) => {
   // #swagger.description = 'See one movie by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid contact id to find a movie.");
+      res.status(400).json("Must use a valid id to find a movie.");
     }
     const movieId = req.params.id;
     MovieModel.findById(movieId, (err, movie) => {
@@ -68,6 +68,8 @@ module.exports.getOneById = (req, res) => {
 };
 
 module.exports.getOneByTitle = (req, res) => {
+  // #swagger.description = 'See one movie by title'
+
   try {
     const title = req.params.title;
     MovieModel.find({ title: title })
@@ -85,6 +87,8 @@ module.exports.getOneByTitle = (req, res) => {
 };
 
 module.exports.getByRating = (req, res) => {
+  // #swagger.description = 'See one movie by rating'
+
   try {
     const rating = req.params.rating;
     MovieModel.find({ rating: rating })
@@ -108,6 +112,8 @@ module.exports.getByRating = (req, res) => {
 };
 
 module.exports.getByGenre = (req, res) => {
+  // #swagger.description = 'See one movie by genre'
+
   try {
     const genre = req.params.genre;
     MovieModel.find({ genre: genre })
@@ -149,10 +155,12 @@ module.exports.deleteOne = async (req, res) => {
 };
 
 module.exports.update = async (req, res) => {
+  // #swagger.description = 'Update movie by ID'
+
   try {
     const movieId = new ObjectId(req.params.id);
     if (!ObjectId.isValid(req.params.id)) {
-      res.status(400).json("Must use a valid id to update a book.");
+      res.status(400).json("Must use a valid id to update a movie.");
     }
     const updateMovie = {
       title: req.body.title,
