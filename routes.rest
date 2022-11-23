@@ -1,12 +1,12 @@
 // LOCALHOST USERS COLLECTION
 
-### Get all users
+### GET ALL USERS
 GET http://localhost:8080/users 
 
-### Get one user by Id
+### GET ONE USER BY ID
 GET http://localhost:8080/users/6374fe62191e03ef27dec2f5
 
-### Create user
+### CREATE ONE USER
 POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
@@ -19,7 +19,7 @@ content-type: application/json
     "phoneNum": "207-555-8888"
   }
 
-### Update user
+### UPDATE ONE USER
 PUT http://localhost:8080/users/6374fe62191e03ef27dec2f5 HTTP/1.1
 content-type: application/json
 
@@ -33,27 +33,27 @@ content-type: application/json
   }
 
 
-### Delete user
+### DELETE ONE USER
 DELETE http://localhost:8080/users/6375951bd861f472c2103262 HTTP/1.1
 
 // LOCALHOST MOVIES COLLECTION
 
-### Get all movies
+### GET ALL MOVIES
 GET http://localhost:8080/movies 
 
-### Get one movie by Id
+### GET ONE MOVIE BY ID
 GET http://localhost:8080/movies/6374ff5e191e03ef27dec2f7
 
-### Get one movie by title
+### GET ONE MOVIE BY TITLE
 GET http://localhost:8080/movies/title/Hocus%20Pocus
 
-### Get movies by rating
+### GET MOVIES BY RATING
 GET http://localhost:8080/movies/rating/PG-13
 
-### Get movies by genre
+### GET MOVIES BY GENRE
 GET http://localhost:8080/movies/genre/comedy
 
-### Create movie
+### CREATE MOVIE
 POST http://localhost:8080/movies HTTP/1.1
 content-type: application/json
 
@@ -67,7 +67,7 @@ content-type: application/json
     "location": "300 Bruce Hill Rd"
   }
 
-### Update movie
+### UPDATE MOVIE
 PUT http://localhost:8080/movies/6374fedf191e03ef27dec2f6 HTTP/1.1
 content-type: application/json
 
@@ -81,28 +81,28 @@ content-type: application/json
     "location": "300 Bruce Hill Rd"
 }
 
-### Delete movie
+### DELETE MOVIE
 DELETE http://localhost:8080/movies/6376b306dc535f7efffbd6fd HTTP/1.1
 
 
 // LOCALHOST BOOKS COLLECTION
 
-### Get all books
+### GET ALL BOOKS
 GET http://localhost:8080/books 
 
-### Get one book by Id
+### GET ONE BOOK BY ID
 GET http://localhost:8080/books/6376b660b06610cce064cc31
 
-### Get one book by title
+### GET ONE BOOK BY TITLE
 GET http://localhost:8080/books/title/Persuasion
 
-### Get books by author
+### GET BOOKS BY AUTHOR
 GET http://localhost:8080/books/author/Jane%20Austen
 
-### Get books by genre
+### GET BOOKS BY GENRE
 GET http://localhost:8080/books/genre/romance
 
-### Create book
+### CREATE ONE BOOK
 POST http://localhost:8080/books HTTP/1.1
 content-type: application/json
 
@@ -116,7 +116,7 @@ content-type: application/json
     "location": "300 Bruce Hill Rd"
   }
 
-### Update book
+### UPDATE ONE BOOK
 PUT http://localhost:8080/books/6376b734b06610cce064cc3c HTTP/1.1
 content-type: application/json
 
@@ -130,24 +130,24 @@ content-type: application/json
     "location": "300 Bruce Hill Rd"
 }
 
-### Delete book
+### DELETE ONE BOOK
 DELETE http://localhost:8080/books/6376b8313dc2c3df9667833c HTTP/1.1
 
 // LOCALHOST REVIEWS COLLECTION
 
-### Get all reviews
+### GET ALL REVIEWS
 GET http://localhost:8080/reviews 
 
-### Get one review by Id
+### GET ONE REVIEW BY ID
 GET http://localhost:8080/reviews/6376cc411740f4925526da8f
 
-### Get one review by username
+### GET ONE REVIEW BY USERNAME
 GET http://localhost:8080/reviews/username/JWengler
 
-### Get reviews by movie/book id
+### GET REVIEWS BY MOVIE/BOOK ID
 GET http://localhost:8080/reviews/media/6376b734b06610cce064cc3c
 
-### Create review
+### CREATE ONE REVIEW
 POST http://localhost:8080/reviews HTTP/1.1
 content-type: application/json
 
@@ -158,7 +158,7 @@ content-type: application/json
     "reviewBody": "I don't understand. Too many people."
   }
 
-### Update review
+### UPDATE ONE REVIEW
 PUT http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
 content-type: application/json
 
@@ -169,5 +169,182 @@ content-type: application/json
     "reviewBody": "I don't understand. Too many people. Umm.."
   }
 
-### Delete review
+### DELETE ONE REVIEW
 DELETE http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
+
+
+### RENDER ROUTES
+
+// LOCALHOST USERS COLLECTION
+
+### GET ALL USERS
+GET https://cse341-final-project-e7kx.onrender.com/users 
+
+### GET ONE USER BY ID
+GET https://cse341-final-project-e7kx.onrender.com/users/6374fe62191e03ef27dec2f5
+
+### CREATE ONE USER
+POST https://cse341-final-project-e7kx.onrender.com/users HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Timmy",
+    "firstName": "Tim",
+    "lastName": "Smith",
+    "streetAddress": "218 Bruce Hill Rd",
+    "email": "timsmith@example.com",
+    "phoneNum": "207-555-8888"
+  }
+
+### UPDATE ONE USER
+PUT https://cse341-final-project-e7kx.onrender.com/users/6374fe62191e03ef27dec2f5 HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Timmy",
+    "firstName": "Tim",
+    "lastName": "Smith",
+    "streetAddress": "218 Bruce Hill Rd",
+    "email": "timsmith@example.com",
+    "phoneNum": "207-555-1111"
+  }
+
+
+### DELETE ONE USER
+DELETE https://cse341-final-project-e7kx.onrender.com/users/6375951bd861f472c2103262 HTTP/1.1
+
+// LOCALHOST MOVIES COLLECTION
+
+### GET ALL MOVIES
+GET https://cse341-final-project-e7kx.onrender.com/movies 
+
+### GET ONE MOVIE BY ID
+GET https://cse341-final-project-e7kx.onrender.com/movies/6374ff5e191e03ef27dec2f7
+
+### GET ONE MOVIE BY TITLE
+GET https://cse341-final-project-e7kx.onrender.com/movies/title/Hocus%20Pocus
+
+### GET MOVIES BY RATING
+GET https://cse341-final-project-e7kx.onrender.com/movies/rating/PG-13
+
+### GET MOVIES BY GENRE
+GET https://cse341-final-project-e7kx.onrender.com/movies/genre/comedy
+
+### CREATE ONE MOVIE
+POST https://cse341-final-project-e7kx.onrender.com/movies HTTP/1.1
+content-type: application/json
+
+  {
+    "title": "Hook",
+    "rating": "PG",
+    "description": "Peter Pan grows up",
+    "genre": "comedy",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+  }
+
+### UPDATE ONE MOVIE
+PUT https://cse341-final-project-e7kx.onrender.com/movies/6374fedf191e03ef27dec2f6 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Hocus Pocus",
+    "rating": "PG",
+    "description": "Three witches try to cast a spell to reclaim their youth.",
+    "genre": "comedy",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+}
+
+### DELETE ONE MOVIE
+DELETE https://cse341-final-project-e7kx.onrender.com/movies/6376b306dc535f7efffbd6fd HTTP/1.1
+
+
+// LOCALHOST BOOKS COLLECTION
+
+### GET ALL BOOKS
+GET https://cse341-final-project-e7kx.onrender.com/books 
+
+### GET ONE BOOK BY ID
+GET https://cse341-final-project-e7kx.onrender.com/books/6376b660b06610cce064cc31
+
+### GET ONE BOOK BY TITLE
+GET https://cse341-final-project-e7kx.onrender.com/books/title/Persuasion
+
+### GET BOOKS BY AUTHOR
+GET https://cse341-final-project-e7kx.onrender.com/books/author/Jane%20Austen
+
+### GET BOOKS BY GENRE
+GET https://cse341-final-project-e7kx.onrender.com/books/genre/romance
+
+### CREATE ONE BOOK
+POST https://cse341-final-project-e7kx.onrender.com/books HTTP/1.1
+content-type: application/json
+
+  {
+    "title": "Mansfield Park",
+    "author": "Jane Austen",
+    "description": "Sadness and then happiness",
+    "genre": "romance",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+  }
+
+### UPDATE ONE BOOK
+PUT https://cse341-final-project-e7kx.onrender.com/books/6376b734b06610cce064cc3c HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Persuasion",
+    "author": "Jane Austen",
+    "description": "Sadness and then happiness",
+    "genre": "romance",
+    "ownerId": "6374fe62191e03ef27dec2f5",
+    "availability": "false",
+    "location": "300 Bruce Hill Rd"
+}
+
+### DELETE ONE BOOK
+DELETE https://cse341-final-project-e7kx.onrender.com/books/6376b8313dc2c3df9667833c HTTP/1.1
+
+// LOCALHOST REVIEWS COLLECTION
+
+### GET ALL REVIEWS
+GET https://cse341-final-project-e7kx.onrender.com/reviews 
+
+### GET ONE REVIEW BY ID
+GET https://cse341-final-project-e7kx.onrender.com/reviews/6376cc411740f4925526da8f
+
+### GET ONE REVIEW BY USERNAME
+GET https://cse341-final-project-e7kx.onrender.com/reviews/username/JWengler
+
+### GET REVIEWS BY MOVIE/BOOK ID
+GET https://cse341-final-project-e7kx.onrender.com/reviews/media/6376b734b06610cce064cc3c
+
+### CREATE ONE REVIEW
+POST https://cse341-final-project-e7kx.onrender.com/reviews HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Bob",
+    "mediaId": "6376b734b06610cce064cc3c",
+    "reviewTitle": "Um ...",
+    "reviewBody": "I don't understand. Too many people."
+  }
+
+### UPDATE ONE REVIEW
+PUT https://cse341-final-project-e7kx.onrender.com/reviews/6376cd121740f4925526da9c HTTP/1.1
+content-type: application/json
+
+  {
+    "username": "Bob",
+    "mediaId": "6376b734b06610cce064cc3c",
+    "reviewTitle": "Um ...",
+    "reviewBody": "I don't understand. Too many people. Umm.."
+  }
+
+### DELETE ONE REVIEW
+DELETE https://cse341-final-project-e7kx.onrender.com/reviews/6376cd121740f4925526da9c HTTP/1.1
