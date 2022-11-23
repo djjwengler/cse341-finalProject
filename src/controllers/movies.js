@@ -183,7 +183,7 @@ module.exports.update = async (req, res) => {
     MovieModel.findOneAndUpdate(
       { _id: movieId },
       updateMovie,
-      null,
+      { runValidators: true },
       (err, data) => {
         if (err) {
           res

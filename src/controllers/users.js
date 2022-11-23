@@ -107,7 +107,7 @@ module.exports.update = async (req, res) => {
     UserModel.findOneAndUpdate(
       { _id: userId },
       updateUser,
-      null,
+      { runValidators: true },
       (err, data) => {
         if (err) {
           res

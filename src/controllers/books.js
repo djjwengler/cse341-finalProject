@@ -181,7 +181,7 @@ module.exports.update = async (req, res) => {
     BookModel.findOneAndUpdate(
       { _id: bookId },
       updateBook,
-      null,
+      { runValidators: true },
       (err, data) => {
         if (err) {
           res

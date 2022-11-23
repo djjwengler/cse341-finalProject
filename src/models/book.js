@@ -1,32 +1,44 @@
-module.exports = (mongoose) => {
+module.exports = (mongoose, validator) => {
   const Book = mongoose.model(
     "books",
     mongoose.Schema({
       title: {
         type: String,
-        required: "Please enter the title of the book",
+        required: [true, "Please enter the title of the book"],
+        trim: true,
       },
       author: {
         type: String,
-        required: "Please enter the author of the book",
+        required: [true, "Please enter the author of the book"],
+        trim: true,
       },
       description: {
         type: String,
+        trim: true,
       },
       genre: {
         type: String,
+        uppercase: true,
       },
       ownerId: {
         type: String,
-        required: "Please enter the ID of the owner",
+        required: [true, "Please enter the ID of the owner"],
+        trim: true,
       },
       availability: {
         type: String,
-        required: "Is this book available? True or False",
+        required: [true, "Is this book available? true or false"],
+        trim: true,
+        lowercase: true,
+        default: "true",
       },
       location: {
         type: String,
-        required: "Where is this item currently located?",
+        required: [
+          true,
+          "Where is this item currently located? e.g. street address",
+        ],
+        trim: true,
       },
     })
   );

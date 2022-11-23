@@ -11,25 +11,25 @@ POST http://localhost:8080/users HTTP/1.1
 content-type: application/json
 
   {
-    "username": "Timmy",
-    "firstName": "Tim",
-    "lastName": "Smith",
-    "streetAddress": "218 Bruce Hill Rd",
-    "email": "timsmith@example.com",
-    "phoneNum": "207-555-8888"
+    "username": "Misterrogers",
+    "firstName": "Mister",
+    "lastName": "Rogers",
+    "streetAddress": "23 Bruce Hill Rd",
+    "email": "wontyoube@myneighbor.com",
+    "phoneNum": "207-121-1212"
   }
 
 ### UPDATE ONE USER
-PUT http://localhost:8080/users/6374fe62191e03ef27dec2f5 HTTP/1.1
+PUT http://localhost:8080/users/63765476893de1c9d6db4526 HTTP/1.1
 content-type: application/json
 
   {
-    "username": "Timmy",
-    "firstName": "Tim",
-    "lastName": "Smith",
-    "streetAddress": "218 Bruce Hill Rd",
-    "email": "timsmith@example.com",
-    "phoneNum": "207-555-1111"
+    "username": "HarryBobby",
+    "firstName": "Harry",
+    "lastName": "Robert",
+    "streetAddress": "230 Bruce Hill Rd",
+    "email": "harry4@example.com",
+    "phoneNum": "207-444-6666"
   }
 
 
@@ -73,11 +73,11 @@ content-type: application/json
 
 {
     "title": "Hocus Pocus",
-    "rating": "PG",
+    "rating": "pg",
     "description": "Three witches try to cast a spell to reclaim their youth.",
     "genre": "comedy",
     "ownerId": "6374fe62191e03ef27dec2f5",
-    "availability": "false",
+    "availability": "FALSE   ",
     "location": "300 Bruce Hill Rd"
 }
 
@@ -126,8 +126,8 @@ content-type: application/json
     "description": "Sadness and then happiness",
     "genre": "romance",
     "ownerId": "6374fe62191e03ef27dec2f5",
-    "availability": "false",
-    "location": "300 Bruce Hill Rd"
+    "availability": "  TRUE  ",
+    "location": "226 Bruce Hill Rd"
 }
 
 ### DELETE ONE BOOK
@@ -152,21 +152,21 @@ POST http://localhost:8080/reviews HTTP/1.1
 content-type: application/json
 
   {
-    "username": "Bob",
-    "mediaId": "6376b734b06610cce064cc3c",
-    "reviewTitle": "Um ...",
-    "reviewBody": "I don't understand. Too many people."
+    "username": "BobbyBob",
+    "mediaId": "6376b6efb06610cce064cc38",
+    "reviewTitle": "Wierd",
+    "reviewBody": "Why?"
   }
 
 ### UPDATE ONE REVIEW
-PUT http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
+PUT http://localhost:8080/reviews/637e9b20f2e1b67dd13799b3 HTTP/1.1
 content-type: application/json
 
   {
-    "username": "Bob",
-    "mediaId": "6376b734b06610cce064cc3c",
-    "reviewTitle": "Um ...",
-    "reviewBody": "I don't understand. Too many people. Umm.."
+    "username": "BobbyBob",
+    "mediaId": "6376b6efb06610cce064cc38",
+    "reviewTitle": "Wierd",
+    "reviewBody": "Why?"
   }
 
 ### DELETE ONE REVIEW

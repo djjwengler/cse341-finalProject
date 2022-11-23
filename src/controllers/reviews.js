@@ -159,7 +159,7 @@ module.exports.update = async (req, res) => {
     ReviewModel.findOneAndUpdate(
       { _id: reviewId },
       updateReview,
-      null,
+      { runValidators: true },
       (err, data) => {
         if (err) {
           res
