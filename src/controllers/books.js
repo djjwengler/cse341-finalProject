@@ -69,9 +69,11 @@ module.exports.getOneById = (req, res) => {
 
 module.exports.getOneByTitle = (req, res) => {
   // #swagger.description = 'See one book by title'
-
   try {
     const title = req.params.title;
+    if (title.length < 2) {
+      res.status(400).json("Must use a valid title");
+    }
     BookModel.find({ title: title })
       .then((data) => {
         res.status(200).send(data);
@@ -91,6 +93,9 @@ module.exports.getByAuthor = (req, res) => {
 
   try {
     const author = req.params.author;
+    if (author.length < 2) {
+      res.status(400).json("Must use a valid author");
+    }
     BookModel.find({ author: author })
       .then((data) => {
         if (data.length == 0) {
@@ -115,6 +120,9 @@ module.exports.getByGenre = (req, res) => {
 
   try {
     const genre = req.params.genre;
+    if (genre.length < 2) {
+      res.status(400).json("Must use a valid genre");
+    }
     BookModel.find({ genre: genre })
       .then((data) => {
         if (data.length == 0) {

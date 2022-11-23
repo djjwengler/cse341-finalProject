@@ -70,6 +70,7 @@ module.exports.getOneById = (req, res) => {
 
 module.exports.deleteOne = async (req, res) => {
   // #swagger.description = 'Delete user by ID'
+
   try {
     if (!ObjectId.isValid(req.params.id)) {
       res.status(400).json("Must use a valid id to delete a user.");
