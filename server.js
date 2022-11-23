@@ -22,7 +22,7 @@ db.mongoose
   .then(() => {
     app.listen(port, () => {
       console.log(
-        `Connected to database ${db.database} and listening on ${port}`
+        `Connected to database ${db.database} and listening on http://localhost:${port}`
       );
     });
   })

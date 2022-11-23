@@ -2,6 +2,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const mongoose = require("mongoose");
+const validator = require("validator");
 mongoose.Promise = global.Promise;
 
 const db = {};
