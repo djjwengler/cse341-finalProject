@@ -74,6 +74,9 @@ module.exports.getByUsername = (req, res) => {
 
   try {
     const username = req.params.username;
+    if (username.length < 2) {
+      res.status(400).json("Must use a valid username");
+    }
     ReviewModel.find({ username: username })
       .then((data) => {
         if (data.length == 0) {
@@ -98,6 +101,9 @@ module.exports.getByMedia = (req, res) => {
 
   try {
     const mediaId = req.params.id;
+    if (mediaId.length < 2) {
+      res.status(400).json("Must use a valid mediaId");
+    }
     ReviewModel.find({ mediaId: mediaId })
       .then((data) => {
         if (data.length == 0) {
