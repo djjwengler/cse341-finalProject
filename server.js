@@ -1,11 +1,6 @@
-const express = require("express");
-const bodyParser = require("body-parser");
-//const mongodb = require("./src/database/connect");
 const port = process.env.PORT || 8080;
 const db = require("./src/models");
-const app = express();
-
-app.use(bodyParser.json()).use("/", require("./src/routes"));
+const app = require("./app");
 
 process.on("uncaughtException", (err, origin) => {
   console.log(

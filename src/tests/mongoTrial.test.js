@@ -1,3 +1,79 @@
+const books = require("../routes/books");
+const request = require("supertest");
+const express = require("express");
+// const app = express();
+const routes = require("express").Router();
+// const app = require("../routes/index");
+
+// app.use(express.urlencoded({ extended: false }));
+
+describe("Sanity test", () => {
+  test("1 should equal 1", () => {
+    expect(1).toBe(1);
+  });
+});
+
+describe("Sample Test", () => {
+  it("should test that true === true", () => {
+    expect(true).toBe(true);
+  });
+});
+
+const app = require("../../app");
+
+describe("Test the root path", () => {
+  test("It should response the GET method", () => {
+    return request(app).get("/").expect(200);
+  });
+});
+
+// import express from "express";
+
+// let apps = express();
+
+// apps.use(express.json());
+// apps.post("/users", async (req, res) => {
+//   const { username, password } = req.body;
+//   if (!username || !password) {
+//     res.send(400);
+//     return;
+//   }
+
+//   res.send({ userId: 0 });
+// });
+
+// export default apps;
+
+// describe('Test the addLike method', () => {
+//   beforeAll(() => {
+//       mongoDB.connect();
+//   });
+
+//   afterAll((done) => {
+//       mongoDB.disconnect(done);
+//   });
+// }
+
+// describe("Books endpoint", () => {
+//   test("should return hello world object", async () => {
+//     const res = await request(app).get("/books");
+//     expect(res.statusCode).toEqual(200);
+//     expect(res.body).toEqual({
+//       message: "Hello World",
+//     });
+//   });
+// });
+
+// routes.use("/books", books);
+// app.use("/", require("../routes"));
+
+// test("index route works", (done) => {
+//   request(app)
+//     .get("/books")
+//     .expect("Content-Type", "text/html; charset=utf-8")
+//     .expect(200, done);
+// });
+
 // const { MongoClient } = require("mongodb");
 
 // describe("insert", () => {
@@ -59,68 +135,134 @@
 //   });
 // });
 
-const {
-  Types: { ObjectId },
-} = require("mongoose");
-const mockingoose = require("mockingoose");
-// const BooksModel = require("../models/book.js");
-const db = require("../models");
-const BookModel = db.book;
-const { getAll } = require("../controllers/books");
-const TestResponse = require("./testResponse");
+// const {
+//   Types: { ObjectId },
+// } = require("mongoose");
+// const mockingoose = require("mockingoose");
+// // const BooksModel = require("../models/book.js");
+// const db = require("../models");
+// const BookModel = db.book;
+// const { getAll } = require("../controllers/books");
+// const TestResponse = require("./testResponse");
 
-jest.setTimeout(60000);
+// jest.setTimeout(60000);
 
-describe("Books service", () => {
-  describe("getAll", () => {
-    test("should return the list of books", async () => {
-      const _book = {
-        title: "Book 1",
-        author: "Author Name",
-        description: "Book description",
-        genre: "Book genre",
-        ownerId: "6374fe62191e03ef27dec2f5",
-        availability: true,
-        location: "Book location",
-      };
+// describe("Books service", () => {
+//   describe("getAll", () => {
+//     test("should return the list of books", async () => {
+//       const _book = {
+//         title: "Book 1",
+//         author: "Author Name",
+//         description: "Book description",
+//         genre: "Book genre",
+//         ownerId: "6374fe62191e03ef27dec2f5",
+//         availability: true,
+//         location: "Book location",
+//       };
 
-      mockingoose(BookModel).toReturn(_book, "find");
+//       mockingoose(BookModel).toReturn(_book, "find");
 
-      // const req = {
-      //     params: {}
-      // }
+//       // const req = {
+//       //     params: {}
+//       // }
 
-      const res = new TestResponse();
+//       const res = new TestResponse();
 
-      await getAll;
-      expect(res.statusCode).toBe(200);
-      expect(res.data).toEqual(_book);
+//       await getAll;
+//       expect(res.statusCode).toBe(200);
+//       expect(res.data).toEqual(_book);
 
-      //   mockingoose(BookModel).toReturn(
-      //     [
-      //       {
-      //         title: "Book 1",
-      //         author: "Author Name",
-      //         description: "Book description",
-      //         genre: "Book genre",
-      //         ownerId: "6374fe62191e03ef27dec2f5",
-      //         availability: true,
-      //         location: "Book location",
-      //       },
-      //       {
-      //         title: "Book 2",
-      //         author: "Author2 Name",
-      //         description: "Book2 description",
-      //         genre: "Book2 genre",
-      //         ownerId: "6374fe62191e03ef27dec2f5",
-      //         availability: true,
-      //         location: "Book2 location",
-      //       },
-      //     ],
-      //     "find"
-      //   );
-      //   const results = await booksController.getAll;
-      //   expect(results[0].title).toBe("Book 1");
-    });
-  });
-});
+//   mockingoose(BookModel).toReturn(
+//     [
+//       {
+//         title: "Book 1",
+//         author: "Author Name",
+//         description: "Book description",
+//         genre: "Book genre",
+//         ownerId: "6374fe62191e03ef27dec2f5",
+//         availability: true,
+//         location: "Book location",
+//       },
+//       {
+//         title: "Book 2",
+//         author: "Author2 Name",
+//         description: "Book2 description",
+//         genre: "Book2 genre",
+//         ownerId: "6374fe62191e03ef27dec2f5",
+//         availability: true,
+//         location: "Book2 location",
+//       },
+//     ],
+//     "find"
+//   );
+//   const results = await booksController.getAll;
+//   expect(results[0].title).toBe("Book 1");
+//     });
+//   });
+// });
+
+// const {
+//   Types: { ObjectId },
+// } = require("mongoose");
+// const mockingoose = require("mockingoose");
+// // const BooksModel = require("../models/book.js");
+// const db = require("../models");
+// const BookModel = db.book;
+// const { getAll } = require("../controllers/books");
+// const TestResponse = require("./testResponse");
+
+// jest.setTimeout(60000);
+
+// describe("Books service", () => {
+//   describe("getAll", () => {
+//     test("should return the list of books", async () => {
+//       const _book = {
+//         title: "Book 1",
+//         author: "Author Name",
+//         description: "Book description",
+//         genre: "Book genre",
+//         ownerId: "6374fe62191e03ef27dec2f5",
+//         availability: true,
+//         location: "Book location",
+//       };
+
+//       mockingoose(BookModel).toReturn(_book, "find");
+
+//       // const req = {
+//       //     params: {}
+//       // }
+
+//       const res = new TestResponse();
+
+//       await getAll;
+//       expect(res.statusCode).toBe(200);
+//       expect(res.data).toEqual(_book);
+
+//       mockingoose(BookModel).toReturn(
+//         [
+//           {
+//             title: "Book 1",
+//             author: "Author Name",
+//             description: "Book description",
+//             genre: "Book genre",
+//             ownerId: "6374fe62191e03ef27dec2f5",
+//             availability: true,
+//             location: "Book location",
+//           },
+//           {
+//             title: "Book 2",
+//             author: "Author2 Name",
+//             description: "Book2 description",
+//             genre: "Book2 genre",
+//             ownerId: "6374fe62191e03ef27dec2f5",
+//             availability: true,
+//             location: "Book2 location",
+//           },
+//         ],
+//         "find"
+//       );
+//       const results = await booksController.getAll;
+//       expect(results[0].title).toBe("Book 1");
+//     });
+//   });
+// });
