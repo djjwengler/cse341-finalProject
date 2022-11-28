@@ -29,21 +29,20 @@ describe("GET id", () => {
   });
 });
 
-// describe("POST book", () => {
-//   it("should create a new book", async () => {
-//     const res = await await request(app).post("/books").send({
-//       title: "Mansfield Park",
-//       author: "Jane Austen",
-//       description: "Sadness and then happiness",
-//       genre: "romance",
-//       ownerId: "6374fe62191e03ef27dec2f5",
-//       availability: "false",
-//       location: "300 Bruce Hill Rd",
-//     });
-//     expect(res.statusCode).toBe(201);
-//     expect(res.body.title).toBe("Mansfield Park");
-//   });
-// });
+describe("POST book", () => {
+  it("should create a new user", async () => {
+    const res = await await request(app).post("/users").send({
+      username: "newUser",
+      firstName: "New",
+      lastName: "User",
+      streetAddress: "XX Bruce Hill Rd",
+      email: "newuser@myneighbor.com",
+      phoneNum: "111-111-1111",
+    });
+    //check authorization error
+    expect(res.statusCode).toBe(302);
+  });
+});
 
 describe("PUT book", () => {
   it("should update a user", async () => {
@@ -59,9 +58,10 @@ describe("PUT book", () => {
   });
 });
 
-// describe("DELETE book by id", () => {
-//   it("should delete a single book by id", async () => {
-//     const res = await request(app).delete("/books/6384d833e8a4ead8fd712cbe");
-//     expect(res.statusCode).toBe(200);
-//   });
-// });
+describe("DELETE user by id", () => {
+  it("should delete a single user by id", async () => {
+    const res = await request(app).delete("/users/637e8e72722d53d721e15373");
+    //check authorization error
+    expect(res.statusCode).toBe(302);
+  });
+});
