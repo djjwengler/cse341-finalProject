@@ -82,8 +82,15 @@ content-type: application/json
 }
 
 ### DELETE MOVIE
-DELETE http://localhost:8080/movies/6376b306dc535f7efffbd6fd HTTP/1.1
+DELETE http://localhost:8080/movies/6384f76c2a17aa8806af1933 HTTP/1.1
 
+//
+//
+//
+//
+//6384f6a22de6b0531df3156f
+//6384f714980cd8a9512399a6
+//6384f76c2a17aa8806af1933
 
 // LOCALHOST BOOKS COLLECTION
 

@@ -58,31 +58,32 @@ describe("GET genre", () => {
 describe("POST movie", () => {
   it("should create a new movie", async () => {
     const res = await await request(app).post("/movies").send({
-      title: "Hook",
+      title: "NewMovie",
       rating: "PG",
-      description: "Peter Pan grows up",
+      description: "new movie to watch",
       genre: "comedy",
       ownerId: "6374fe62191e03ef27dec2f5",
       availability: "false",
       location: "300 Bruce Hill Rd",
     });
     expect(res.statusCode).toBe(201);
-    expect(res.body.title).toBe("Hook");
+    expect(res.body.title).toBe("NewMovie");
   });
 });
 
 describe("PUT movie", () => {
   it("should update a movie", async () => {
-    const res = await request(app).put("/movies/6376b660b06610cce064cc31").send({
-      title: "Hocus Pocus",
-      rating: "pg",
-      description:
-        "Three witches try to cast a spell to reclaim their youth",
-      genre: "comedy",
-      ownerId: "6374fe62191e03ef27dec2f5",
-      availability: "FALSE",
-      location: "300 Bruce Hill Rd",
-    });
+    const res = await request(app)
+      .put("/movies/6376b660b06610cce064cc31")
+      .send({
+        title: "Hocus Pocus",
+        rating: "pg",
+        description: "Three witches try to cast a spell to reclaim their youth",
+        genre: "comedy",
+        ownerId: "6374fe62191e03ef27dec2f5",
+        availability: "FALSE",
+        location: "300 Bruce Hill Rd",
+      });
     expect(res.statusCode).toBe(204);
   });
 });
@@ -90,8 +91,9 @@ describe("PUT movie", () => {
 // BEFORE EVERY TEST RUN: update with existing Hook ID
 describe("DELETE movie by id", () => {
   it("should delete a single movie by id", async () => {
-    const res = await request(app).delete("/movies/637e6ec27f674650d90cc394");
+    const result = await request(app).get("/movies/title/NewMovie");
+    const id = result.body[0]._id;
+    const res = await request(app).delete("/movies/" + id);
     expect(res.statusCode).toBe(200);
   });
 });
-

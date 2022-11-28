@@ -58,16 +58,16 @@ describe("GET genre", () => {
 describe("POST book", () => {
   it("should create a new book", async () => {
     const res = await await request(app).post("/books").send({
-      title: "Mansfield Park",
-      author: "Jane Austen",
-      description: "Sadness and then happiness",
+      title: "NewBook",
+      author: "New Author",
+      description: "a new book to read",
       genre: "romance",
       ownerId: "6374fe62191e03ef27dec2f5",
       availability: "false",
       location: "300 Bruce Hill Rd",
     });
     expect(res.statusCode).toBe(201);
-    expect(res.body.title).toBe("Mansfield Park");
+    expect(res.body.title).toBe("NewBook");
   });
 });
 
@@ -87,10 +87,9 @@ describe("PUT book", () => {
   });
 });
 
-// BEFORE EVERY TEST RUN: update with existing Mansfield Park ID
 describe("DELETE book by id", () => {
   it("should delete a single book by id", async () => {
-    const result = await request(app).get("/books/title/Mansfield%20Park");
+    const result = await request(app).get("/books/title/NewBook");
     const id = result.body[0]._id;
     const res = await request(app).delete("/books/" + id);
     expect(res.statusCode).toBe(200);

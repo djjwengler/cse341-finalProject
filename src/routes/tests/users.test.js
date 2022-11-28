@@ -1,3 +1,9 @@
+describe("Sanity test", () => {
+  test("1 should equal 1", () => {
+    expect(1).toBe(1);
+  });
+});
+
 // const mongoose = require("mongoose");
 // const request = require("supertest");
 // const app = require("../../../app");
@@ -94,15 +100,6 @@
 //     expect(res.statusCode).toBe(200);
 //   });
 // });
-
-
-
-
-
-
-
-
-
 
 // const { MongoClient } = require("mongodb");
 
