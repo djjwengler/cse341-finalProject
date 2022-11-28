@@ -7,7 +7,6 @@ const BooksModel = require("../../models/book.js");
 const db = require("../../models");
 const BookModel = db.book;
 const booksController = require("../books");
-const TestResponse = require("./testResponse");
 const request = require("supertest");
 const { getOneById } = require("../books");
 const app = require("../../../app");
