@@ -4,8 +4,6 @@ const app = require("../../../app");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// jest.setTimeout(60000);
-
 // Connect to the database before each test
 beforeEach(async () => {
   await mongoose.connect(process.env.MONGODB_URI);
@@ -76,7 +74,6 @@ describe("PUT review", () => {
   });
 });
 
-// BEFORE EVERY TEST RUN: update with existing Hook ID
 describe("DELETE review by id", () => {
   it("should delete a single review by id", async () => {
     const result = await request(app).get("/reviews/username/NewReviewer");

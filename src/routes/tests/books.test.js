@@ -4,8 +4,6 @@ const app = require("../../../app");
 const dotenv = require("dotenv");
 dotenv.config();
 
-// jest.setTimeout(60000);
-
 // Connect to the database before each test
 beforeEach(async () => {
   await mongoose.connect(process.env.MONGODB_URI);
