@@ -40,7 +40,7 @@ describe("GET title", () => {
 });
 
 describe("GET author", () => {
-  it("should return a single book by author", async () => {
+  it("should return a book by author", async () => {
     const res = await request(app).get("/books/author/Jane%20Austen");
     expect(res.statusCode).toBe(200);
     expect(res.body[0].author).toBe("Jane Austen");
