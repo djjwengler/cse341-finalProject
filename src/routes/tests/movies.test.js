@@ -1,5 +1,97 @@
-describe("Sanity test", () => {
-  test("1 should equal 1", () => {
-    expect(1).toBe(1);
+const mongoose = require("mongoose");
+const request = require("supertest");
+const app = require("../../../app");
+const dotenv = require("dotenv");
+dotenv.config();
+
+// jest.setTimeout(60000);
+
+// Connect to the database before each test
+beforeEach(async () => {
+  await mongoose.connect(process.env.MONGODB_URI);
+});
+
+// Closing database connection after each test
+afterEach(async () => {
+  await mongoose.connection.close();
+});
+
+describe("GETall movies", () => {
+  it("should return all movies", async () => {
+    const res = await request(app).get("/movies");
+    expect(res.statusCode).toBe(200);
   });
 });
+
+describe("GET id", () => {
+  it("should return a single movie by id", async () => {
+    const res = await request(app).get("/movies/6374fedf191e03ef27dec2f6");
+    expect(res.statusCode).toBe(200);
+    expect(res.body.title).toBe("Hocus Pocus");
+  });
+});
+
+describe("GET title", () => {
+  it("should return a single movie by title", async () => {
+    const res = await request(app).get("/movies/title/Hook");
+    expect(res.statusCode).toBe(200);
+    expect(res.body[0].title).toBe("Hook");
+  });
+});
+
+describe("GET rating", () => {
+  it("should return a single movie by rating", async () => {
+    const res = await request(app).get("/movies/rating/PG");
+    expect(res.statusCode).toBe(200);
+    expect(res.body[0].rating).toBe("PG");
+  });
+});
+
+describe("GET genre", () => {
+  it("should return a single movie by genre", async () => {
+    const res = await request(app).get("/movies/genre/comedy");
+    expect(res.statusCode).toBe(200);
+    expect(res.body[0].genre).toBe("COMEDY");
+  });
+});
+
+describe("POST movie", () => {
+  it("should create a new movie", async () => {
+    const res = await await request(app).post("/movies").send({
+      title: "Hook",
+      rating: "PG",
+      description: "Peter Pan grows up",
+      genre: "comedy",
+      ownerId: "6374fe62191e03ef27dec2f5",
+      availability: "false",
+      location: "300 Bruce Hill Rd",
+    });
+    expect(res.statusCode).toBe(201);
+    expect(res.body.title).toBe("Hook");
+  });
+});
+
+describe("PUT movie", () => {
+  it("should update a movie", async () => {
+    const res = await request(app).put("/movies/6376b660b06610cce064cc31").send({
+      title: "Hocus Pocus",
+      rating: "pg",
+      description:
+        "Three witches try to cast a spell to reclaim their youth",
+      genre: "comedy",
+      ownerId: "6374fe62191e03ef27dec2f5",
+      availability: "FALSE",
+      location: "300 Bruce Hill Rd",
+    });
+    expect(res.statusCode).toBe(204);
+  });
+});
+
+// BEFORE EVERY TEST RUN: update with existing Hook ID
+describe("DELETE movie by id", () => {
+  it("should delete a single movie by id", async () => {
+    const res = await request(app).delete("/movies/637e6ec27f674650d90cc394");
+    expect(res.statusCode).toBe(200);
+  });
+});
+
