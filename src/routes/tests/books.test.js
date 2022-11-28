@@ -90,7 +90,9 @@ describe("PUT book", () => {
 // BEFORE EVERY TEST RUN: update with existing Mansfield Park ID
 describe("DELETE book by id", () => {
   it("should delete a single book by id", async () => {
-    const res = await request(app).delete("/books/6384d833e8a4ead8fd712cbe");
+    const result = await request(app).get("/books/title/Mansfield%20Park");
+    const id = result.body[0]._id;
+    const res = await request(app).delete("/books/" + id);
     expect(res.statusCode).toBe(200);
   });
 });
