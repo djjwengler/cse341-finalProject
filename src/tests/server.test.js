@@ -7,18 +7,6 @@ const routes = require("express").Router();
 
 // app.use(express.urlencoded({ extended: false }));
 
-describe("Sanity test", () => {
-  test("1 should equal 1", () => {
-    expect(1).toBe(1);
-  });
-});
-
-describe("Sample Test", () => {
-  it("should test that true === true", () => {
-    expect(true).toBe(true);
-  });
-});
-
 const app = require("../../app");
 
 describe("Test the root path", () => {
@@ -27,6 +15,80 @@ describe("Test the root path", () => {
   });
 });
 
+describe("Test the root path", () => {
+  test("It should response the GET method", () => {
+    return request(app).get("/").expect(200);
+  });
+});
+
+const assert = require("assert");
+
+const expressApp = express();
+const usersController = require("../controllers/users");
+
+expressApp.get("/", usersController.getAll);
+expressApp.get("/:id", usersController.getOneById);
+expressApp.put("/:id", usersController.update);
+expressApp.delete("/:id", usersController.deleteOne);
+expressApp.post("/", usersController.create);
+
+// test("index route works", (done) => {
+//   request(expressApp)
+//     .get("/")
+//     .expect("Content-Type", /json/)
+//     .expect("Content-Length", "15")
+//     .expect(200, done);
+// });
+
+// describe("Post Endpoints", () => {
+//   it("should create a new post", async () => {
+//     const res = await request(app).post("/").send({
+//       username: "HarryBobby",
+//       firstName: "Harry",
+//       lastName: "Robert",
+//       streetAddress: "230 Bruce Hill Rd",
+//       email: "harry4@example.com",
+//       phoneNum: "207-444-6666",
+//     });
+//     expect(res.statusCode).toEqual(201);
+//     expect(res.body).toHaveProperty("post");
+//   });
+// });
+
+request(expressApp)
+  .get("/")
+  .expect("Content-Type", /json/)
+  .expect("Content-Length", "15")
+  .expect(200)
+  .end(function (err, res) {
+    if (err) throw err;
+  });
+
+request(expressApp)
+  .get("/6374fe62191e03ef27dec2f5")
+  .expect("Content-Type", /json/)
+  .expect("Content-Length", "37")
+  .expect(200)
+  .end(function (err, res) {
+    if (err) throw err;
+  });
+
+// request(expressApp)
+//   .post("/")
+//   .send({
+//     username: "HarryBobby",
+//     firstName: "Harry",
+//     lastName: "Robert",
+//     streetAddress: "230 Bruce Hill Rd",
+//     email: "harry4@example.com",
+//     phoneNum: "207-444-6666",
+//   })
+//   .expect("Content-Type", /json/)
+//   .expect("Content-Length", "237")
+//   .expect(200)
+//   .end(function (err, res) {
+//     if (err) throw err;
+//   });
 // import express from "express";
 
 // let apps = express();
