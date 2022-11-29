@@ -1,4 +1,6 @@
 const movieController = require("../movies");
+const mockingoose = require("mockingoose");
+const Movie = require("../../models").movie;
 
 let req, res, send;
 
@@ -6,11 +8,23 @@ beforeEach(() => {
   req = {};
   send = jest.fn();
   res = {
-    status: jest.fn(() => ({
-      send,
-    })),
+    status: jest.fn().mockImplementation(() => ({ send })),
     json: jest.fn(),
   };
+
+  mockingoose(Movie).toReturn({
+    title: "NewMovie",
+    rating: "PG",
+    description: "new movie to watch",
+    genre: "comedy",
+    ownerId: "6374fe62191e03ef27dec2f5",
+    availability: "false",
+    location: "300 Bruce Hill Rd",
+  });
+});
+
+afterEach(() => {
+  mockingoose(Movie).reset();
 });
 
 describe("create()", () => {
@@ -26,8 +40,8 @@ describe("create()", () => {
         location: "300 Bruce Hill Rd",
       };
     });
-    it("returns a 201", () => {
-      movieController.create(req, res);
+    it("returns a 201", async () => {
+      await movieController.create(req, res);
       expect(res.status).toHaveBeenCalledWith(201);
     });
   });

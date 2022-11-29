@@ -2,23 +2,16 @@ const db = require("../models");
 const MovieModel = db.movie;
 const ObjectId = require("mongodb").ObjectId;
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
   // #swagger.description = 'Add movie'
   try {
     const movie = new MovieModel(req.body);
-    movie
-      .save()
-      .then((data) => {
-        console.log(data);
-        res.status(201).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Some error occurred while adding the movie.",
-        });
-      });
+    const data = await movie.save();
+    await res.status(201).send(data);
   } catch (err) {
-    res.status(500).json(err);
+    res
+      .status(500)
+      .json(err.message || "Some error occurred while adding the movie.");
   }
 };
 

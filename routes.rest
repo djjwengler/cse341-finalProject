@@ -266,7 +266,7 @@ content-type: application/json
 }
 
 ### DELETE ONE MOVIE
-DELETE https://cse341-final-project-e7kx.onrender.com/movies/6376b306dc535f7efffbd6fd HTTP/1.1
+DELETE https://cse341-final-project-e7kx.onrender.com/movies/63861157d5302cb3ab020cb7 HTTP/1.1
 
 
 // LOCALHOST BOOKS COLLECTION

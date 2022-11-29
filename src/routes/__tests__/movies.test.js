@@ -55,7 +55,7 @@ describe("GET genre", () => {
 
 describe("POST movie", () => {
   it("should create a new movie", async () => {
-    const res = await await request(app).post("/movies").send({
+    const res = await request(app).post("/movies").send({
       title: "NewMovie",
       rating: "PG",
       description: "new movie to watch",
@@ -64,8 +64,8 @@ describe("POST movie", () => {
       availability: "false",
       location: "300 Bruce Hill Rd",
     });
-    expect(res.statusCode).toBe(201);
-    expect(res.body.title).toBe("NewMovie");
+    await expect(res.statusCode).toBe(201);
+    await expect(res.body.title).toBe("NewMovie");
   });
 });
 
