@@ -2,32 +2,22 @@ const db = require("../models");
 const UserModel = db.user;
 const ObjectId = require("mongodb").ObjectId;
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
   // #swagger.description = 'Create user'
   try {
     const user = new UserModel(req.body);
-    user
-      .save()
-      .then((data) => {
-        console.log(data);
-        res.status(201).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while creating the user.",
-        });
-      });
+    const data = await user.save();
+    await res.status(201).send(data);
   } catch (err) {
     res.status(500).json(err);
   }
 };
 
-module.exports.getAll = (req, res) => {
+module.exports.getAll = async (req, res) => {
   // #swagger.description = 'See all users'
 
   try {
-    UserModel.find({})
+    await UserModel.find({})
       .then((data) => {
         res.status(200).send(data);
       })
@@ -41,7 +31,7 @@ module.exports.getAll = (req, res) => {
   }
 };
 
-module.exports.getOneById = (req, res) => {
+module.exports.getOneById = async (req, res) => {
   // #swagger.description = 'See one user by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
@@ -76,7 +66,7 @@ module.exports.deleteOne = async (req, res) => {
       res.status(400).json("Must use a valid id to delete a user.");
     }
     const userId = new ObjectId(req.params.id);
-    UserModel.deleteOne({ _id: userId })
+    await UserModel.deleteOne({ _id: userId })
       .then(() => {
         res.status(200).json("User successfully deleted");
       })

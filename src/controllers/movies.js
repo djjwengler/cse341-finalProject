@@ -15,10 +15,10 @@ module.exports.create = async (req, res) => {
   }
 };
 
-module.exports.getAll = (req, res) => {
+module.exports.getAll = async (req, res) => {
   // #swagger.description = 'See all movies'
   try {
-    MovieModel.find({})
+    await MovieModel.find({})
       .then((data) => {
         res.status(200).send(data);
       })
@@ -29,11 +29,11 @@ module.exports.getAll = (req, res) => {
         });
       });
   } catch (err) {
-    res.status(500).json(err);
+    await res.status(500).json(err);
   }
 };
 
-module.exports.getOneById = (req, res) => {
+module.exports.getOneById = async (req, res) => {
   // #swagger.description = 'See one movie by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
@@ -56,11 +56,11 @@ module.exports.getOneById = (req, res) => {
       }
     });
   } catch (err) {
-    res.status(500).json(err);
+    await res.status(500).json(err);
   }
 };
 
-module.exports.getOneByTitle = (req, res) => {
+module.exports.getOneByTitle = async (req, res) => {
   // #swagger.description = 'See one movie by title'
 
   try {
@@ -68,7 +68,7 @@ module.exports.getOneByTitle = (req, res) => {
     if (title.length < 2) {
       res.status(400).json("Must use a valid title");
     }
-    MovieModel.find({ title: title })
+    await MovieModel.find({ title: title })
       .then((data) => {
         res.status(200).send(data);
       })
@@ -82,7 +82,7 @@ module.exports.getOneByTitle = (req, res) => {
   }
 };
 
-module.exports.getByRating = (req, res) => {
+module.exports.getByRating = async (req, res) => {
   // #swagger.description = 'See one movie by rating'
 
   try {
@@ -90,7 +90,7 @@ module.exports.getByRating = (req, res) => {
     if (rating.length < 2) {
       res.status(400).json("Must use a valid rating");
     }
-    MovieModel.find({ rating: rating })
+    await MovieModel.find({ rating: rating })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No movies could be found with that rating.");
@@ -110,7 +110,7 @@ module.exports.getByRating = (req, res) => {
   }
 };
 
-module.exports.getByGenre = (req, res) => {
+module.exports.getByGenre = async (req, res) => {
   // #swagger.description = 'See one movie by genre'
 
   try {
@@ -118,7 +118,7 @@ module.exports.getByGenre = (req, res) => {
     if (genre.length < 2) {
       res.status(400).json("Must use a valid genre");
     }
-    MovieModel.find({ genre: genre })
+    await MovieModel.find({ genre: genre })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No movies could be found with that genre.");
@@ -144,7 +144,7 @@ module.exports.deleteOne = async (req, res) => {
       res.status(400).json("Must use a valid id to delete a movie.");
     }
     const movieId = new ObjectId(req.params.id);
-    MovieModel.deleteOne({ _id: movieId })
+    await MovieModel.deleteOne({ _id: movieId })
       .then(() => {
         res.status(200).json("Movie successfully deleted");
       })

@@ -2,31 +2,24 @@ const db = require("../models");
 const BookModel = db.book;
 const ObjectId = require("mongodb").ObjectId;
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
   // #swagger.description = 'Add book'
 
   try {
     const book = new BookModel(req.body);
-    book
-      .save()
-      .then((data) => {
-        console.log(data);
-        res.status(201).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message: err.message || "Some error occurred while adding the book.",
-        });
-      });
+    const data = await book.save();
+    await res.status(201).send(data);
   } catch (err) {
-    res.status(500).json(err);
+    res
+      .status(500)
+      .json(err.message || "Some error occurred while adding the book.");
   }
 };
 
-module.exports.getAll = (req, res) => {
+module.exports.getAll = async (req, res) => {
   // #swagger.description = 'See all books'
   try {
-    BookModel.find({})
+    await BookModel.find({})
       .then((data) => {
         res.status(200).send(data);
       })
@@ -40,7 +33,7 @@ module.exports.getAll = (req, res) => {
   }
 };
 
-module.exports.getOneById = (req, res) => {
+module.exports.getOneById = async (req, res) => {
   // #swagger.description = 'See one book by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
@@ -67,14 +60,14 @@ module.exports.getOneById = (req, res) => {
   }
 };
 
-module.exports.getOneByTitle = (req, res) => {
+module.exports.getOneByTitle = async (req, res) => {
   // #swagger.description = 'See one book by title'
   try {
     const title = req.params.title;
     if (title.length < 2) {
       res.status(400).json("Must use a valid title");
     }
-    BookModel.find({ title: title })
+    await BookModel.find({ title: title })
       .then((data) => {
         res.status(200).send(data);
       })
@@ -88,7 +81,7 @@ module.exports.getOneByTitle = (req, res) => {
   }
 };
 
-module.exports.getByAuthor = (req, res) => {
+module.exports.getByAuthor = async (req, res) => {
   // #swagger.description = 'See all books by author'
 
   try {
@@ -96,7 +89,7 @@ module.exports.getByAuthor = (req, res) => {
     if (author.length < 2) {
       res.status(400).json("Must use a valid author");
     }
-    BookModel.find({ author: author })
+    await BookModel.find({ author: author })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No books could be found with that author.");
@@ -115,7 +108,7 @@ module.exports.getByAuthor = (req, res) => {
   }
 };
 
-module.exports.getByGenre = (req, res) => {
+module.exports.getByGenre = async (req, res) => {
   // #swagger.description = 'See all books by genre'
 
   try {
@@ -123,7 +116,7 @@ module.exports.getByGenre = (req, res) => {
     if (genre.length < 2) {
       res.status(400).json("Must use a valid genre");
     }
-    BookModel.find({ genre: genre })
+    await BookModel.find({ genre: genre })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No books could be found with that genre.");
@@ -149,7 +142,7 @@ module.exports.deleteOne = async (req, res) => {
       res.status(400).json("Must use a valid id to delete a book.");
     }
     const bookId = new ObjectId(req.params.id);
-    BookModel.deleteOne({ _id: bookId })
+    await BookModel.deleteOne({ _id: bookId })
       .then(() => {
         res.status(200).json("Book successfully deleted");
       })

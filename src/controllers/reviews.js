@@ -2,32 +2,24 @@ const db = require("../models");
 const ReviewModel = db.review;
 const ObjectId = require("mongodb").ObjectId;
 
-module.exports.create = (req, res) => {
+module.exports.create = async (req, res) => {
   // #swagger.description = 'Add review'
 
   try {
     const review = new ReviewModel(req.body);
-    review
-      .save()
-      .then((data) => {
-        console.log(data);
-        res.status(201).send(data);
-      })
-      .catch((err) => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while adding the review.",
-        });
-      });
+    const data = await review.save();
+    await res.status(201).send(data);
   } catch (err) {
-    res.status(500).json(err);
+    res
+      .status(500)
+      .json(err.message || "Some error occurred while adding the review.");
   }
 };
 
-module.exports.getAll = (req, res) => {
+module.exports.getAll = async (req, res) => {
   // #swagger.description = 'See all reviews'
   try {
-    ReviewModel.find({})
+    await ReviewModel.find({})
       .then((data) => {
         res.status(200).send(data);
       })
@@ -42,7 +34,7 @@ module.exports.getAll = (req, res) => {
   }
 };
 
-module.exports.getOneById = (req, res) => {
+module.exports.getOneById = async (req, res) => {
   // #swagger.description = 'See one review by id'
   try {
     if (!ObjectId.isValid(req.params.id)) {
@@ -69,7 +61,7 @@ module.exports.getOneById = (req, res) => {
   }
 };
 
-module.exports.getByUsername = (req, res) => {
+module.exports.getByUsername = async (req, res) => {
   // #swagger.description = 'See all reviews by username'
 
   try {
@@ -77,7 +69,7 @@ module.exports.getByUsername = (req, res) => {
     if (username.length < 2) {
       res.status(400).json("Must use a valid username");
     }
-    ReviewModel.find({ username: username })
+    await ReviewModel.find({ username: username })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No reviews could be found by that username.");
@@ -96,7 +88,7 @@ module.exports.getByUsername = (req, res) => {
   }
 };
 
-module.exports.getByMedia = (req, res) => {
+module.exports.getByMedia = async (req, res) => {
   // #swagger.description = 'See all reviews by media id'
 
   try {
@@ -104,7 +96,7 @@ module.exports.getByMedia = (req, res) => {
     if (mediaId.length < 2) {
       res.status(400).json("Must use a valid mediaId");
     }
-    ReviewModel.find({ mediaId: mediaId })
+    await ReviewModel.find({ mediaId: mediaId })
       .then((data) => {
         if (data.length == 0) {
           res.status(500).send("No reviews could be found by that media Id.");
@@ -130,7 +122,7 @@ module.exports.deleteOne = async (req, res) => {
       res.status(400).json("Must use a valid id to delete a review.");
     }
     const reviewId = new ObjectId(req.params.id);
-    ReviewModel.deleteOne({ _id: reviewId })
+    await ReviewModel.deleteOne({ _id: reviewId })
       .then(() => {
         res.status(200).json("Review successfully deleted");
       })

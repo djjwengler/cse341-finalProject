@@ -48,7 +48,7 @@ GET http://localhost:8080/movies/6374ff5e191e03ef27dec2f7
 GET http://localhost:8080/movies/title/Hocus%20Pocus
 
 ### GET MOVIES BY RATING
-GET http://localhost:8080/movies/rating/PG-13
+GET http://localhost:8080/movies/rating/PG
 
 ### GET MOVIES BY GENRE
 GET http://localhost:8080/movies/genre/comedy
@@ -58,9 +58,9 @@ POST http://localhost:8080/movies HTTP/1.1
 content-type: application/json
 
   {
-    "title": "Hook",
+    "title": "NewMovie",
     "rating": "PG",
-    "description": "Peter Pan grows up",
+    "description": "movie description",
     "genre": "comedy",
     "ownerId": "6374fe62191e03ef27dec2f5",
     "availability": "false",
@@ -77,20 +77,12 @@ content-type: application/json
     "description": "Three witches try to cast a spell to reclaim their youth.",
     "genre": "comedy",
     "ownerId": "6374fe62191e03ef27dec2f5",
-    "availability": "FALSE   ",
+    "availability": "TRUE   ",
     "location": "300 Bruce Hill Rd"
 }
 
 ### DELETE MOVIE
-DELETE http://localhost:8080/movies/6384f76c2a17aa8806af1933 HTTP/1.1
-
-//
-//
-//
-//
-//6384f6a22de6b0531df3156f
-//6384f714980cd8a9512399a6
-//6384f76c2a17aa8806af1933
+DELETE http://localhost:8080/movies/638676f0612fbaf2269ff7a3 HTTP/1.1
 
 // LOCALHOST BOOKS COLLECTION
 
@@ -114,9 +106,9 @@ POST http://localhost:8080/books HTTP/1.1
 content-type: application/json
 
   {
-    "title": "Mansfield Park",
-    "author": "Jane Austen",
-    "description": "Sadness and then happiness",
+    "title": "New Book",
+    "author": "New Author",
+    "description": "description",
     "genre": "romance",
     "ownerId": "6374fe62191e03ef27dec2f5",
     "availability": "false",
@@ -133,12 +125,12 @@ content-type: application/json
     "description": "Sadness and then happiness",
     "genre": "romance",
     "ownerId": "6374fe62191e03ef27dec2f5",
-    "availability": "  TRUE  ",
+    "availability": "  false  ",
     "location": "226 Bruce Hill Rd"
 }
 
 ### DELETE ONE BOOK
-DELETE http://localhost:8080/books/6376b8313dc2c3df9667833c HTTP/1.1
+DELETE http://localhost:8080/books/6386780eff139f6eebba5621 HTTP/1.1
 
 // LOCALHOST REVIEWS COLLECTION
 
@@ -159,7 +151,7 @@ POST http://localhost:8080/reviews HTTP/1.1
 content-type: application/json
 
   {
-    "username": "BobbyBob",
+    "username": "NewReviewer",
     "mediaId": "6376b6efb06610cce064cc38",
     "reviewTitle": "Wierd",
     "reviewBody": "Why?"
@@ -177,12 +169,12 @@ content-type: application/json
   }
 
 ### DELETE ONE REVIEW
-DELETE http://localhost:8080/reviews/6376cd121740f4925526da9c HTTP/1.1
+DELETE http://localhost:8080/reviews/6386789ddd3a21aca4a9515e HTTP/1.1
 
 
 ### RENDER ROUTES
 
-// LOCALHOST USERS COLLECTION
+// PRODUCTION USERS COLLECTION
 
 ### GET ALL USERS
 GET https://cse341-final-project-e7kx.onrender.com/users 
@@ -208,7 +200,7 @@ PUT https://cse341-final-project-e7kx.onrender.com/users/6374fe62191e03ef27dec2f
 content-type: application/json
 
   {
-    "username": "Timmy",
+    "username": "TimmyTim",
     "firstName": "Tim",
     "lastName": "Smith",
     "streetAddress": "218 Bruce Hill Rd",
@@ -220,7 +212,7 @@ content-type: application/json
 ### DELETE ONE USER
 DELETE https://cse341-final-project-e7kx.onrender.com/users/6375951bd861f472c2103262 HTTP/1.1
 
-// LOCALHOST MOVIES COLLECTION
+// PRODUCTION MOVIES COLLECTION
 
 ### GET ALL MOVIES
 GET https://cse341-final-project-e7kx.onrender.com/movies 
@@ -269,7 +261,7 @@ content-type: application/json
 DELETE https://cse341-final-project-e7kx.onrender.com/movies/63861157d5302cb3ab020cb7 HTTP/1.1
 
 
-// LOCALHOST BOOKS COLLECTION
+// PRODUCTION BOOKS COLLECTION
 
 ### GET ALL BOOKS
 GET https://cse341-final-project-e7kx.onrender.com/books 
@@ -317,7 +309,7 @@ content-type: application/json
 ### DELETE ONE BOOK
 DELETE https://cse341-final-project-e7kx.onrender.com/books/6376b8313dc2c3df9667833c HTTP/1.1
 
-// LOCALHOST REVIEWS COLLECTION
+// PRODUCTION REVIEWS COLLECTION
 
 ### GET ALL REVIEWS
 GET https://cse341-final-project-e7kx.onrender.com/reviews 

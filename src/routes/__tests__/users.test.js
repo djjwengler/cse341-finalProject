@@ -25,7 +25,7 @@ describe("GET id", () => {
   it("should return a single user by id", async () => {
     const res = await request(app).get("/users/6374fe62191e03ef27dec2f5");
     expect(res.statusCode).toBe(200);
-    expect(res.body.username).toBe("Timmy");
+    expect(res.body.username).toBe("TimmyTim");
   });
 });
 
