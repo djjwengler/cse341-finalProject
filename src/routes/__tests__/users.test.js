@@ -23,7 +23,7 @@ describe("GET /users", () => {
 
 describe("GET id", () => {
   it("should return a single user by id", async () => {
-    const res = await request(app).get("/users/6374fe62191e03ef27dec2f5");
+    const res = await request(app).get("/users/6386aeba93fa0318f201c79c");
     expect(res.statusCode).toBe(200);
     expect(res.body.username).toBe("TimmyTim");
   });
