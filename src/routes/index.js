@@ -10,7 +10,7 @@ const clientId = process.env.CLIENT_ID;
 const baseUrl = process.env.BASE_URL;
 const { auth } = require("express-openid-connect");
 const { graphqlHTTP } = require("express-graphql");
-const schema = require("../middleware/schemaUsers");
+const schema = require("../middleware/schema");
 
 const config = {
   authRequired: false,
