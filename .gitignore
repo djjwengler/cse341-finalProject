@@ -105,4 +105,4 @@ dist
 
 #Custom
 swaggerSchema.txt
-swagger-og.json
+routes.rest
