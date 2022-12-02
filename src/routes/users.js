@@ -1,5 +1,5 @@
 const routes = require("express").Router();
-const usersController = require("../controllers/js controllers/users");
+const usersController = require("../controllers/users");
 const { requiresAuth } = require("express-openid-connect");
 
 //retrieves all users

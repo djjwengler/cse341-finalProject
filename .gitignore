@@ -106,3 +106,4 @@ dist
 #Custom
 swaggerSchema.txt
 routes.rest
+src/legacy
